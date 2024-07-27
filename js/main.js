@@ -22,6 +22,7 @@ function solicitarDato(tipo, mensaje, sugerencia = '') {
             dato = prompt(mensaje, sugerencia).toLocaleLowerCase();
         } while (dato == '');
     }
+    
     return dato;
 }
 
@@ -53,7 +54,7 @@ while (!salir) {
     let opcion = parseInt(prompt(menu_str));
     switch (opcion) {
         case 0:
-            alert("FIN. Para volver al meni presiona F5")
+            alert("FIN. Para volver al menu principal presiona F5")
             salir = true
             break
         case 1:
