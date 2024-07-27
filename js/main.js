@@ -7,42 +7,27 @@ let sistema_stock = new Sistema(herrajes)
 
 function solicitarDato(tipo, mensaje, sugerencia = '') {
     let dato;
-    if (tipo == 'numero') {
+    if (tipo == 'entero_positivo') {
         do {
             dato = parseFloat(prompt(mensaje, sugerencia));
         } while (isNaN(dato) || dato < 0);
     }
-    else if (tipo == 'numeroEntero') {
+    else if (tipo == 'entero') {
         do {
             dato = parseInt(prompt(mensaje, sugerencia));
-        } while (isNaN(dato) || dato < 0);
+        } while (isNaN(dato));
     }
     else if (tipo == 'cadena') {
+        do {
+            dato = prompt(mensaje, sugerencia);
+        } while (dato == '');
+    }
+    else if (tipo == 'cadena_minusculas') {
         do {
             dato = prompt(mensaje, sugerencia).toLocaleLowerCase();
         } while (dato == '');
     }
     
-    return dato;
-}
-
-function solicitarDato2(tipo, mensaje, sugerencia = '') {
-    let dato;
-    if (tipo == 'numero') {
-        do {
-            dato = parseFloat(prompt(mensaje, sugerencia));
-        } while (isNaN(dato));
-    }
-    else if (tipo == 'numeroEntero') {
-        do {
-            dato = parseInt(prompt(mensaje, sugerencia));
-        } while (isNaN(dato));
-    }
-    else if (tipo == 'cadena') {
-        do {
-            dato = prompt(mensaje, sugerencia).toLocaleLowerCase();
-        } while (dato == '');
-    }
     return dato;
 }
 

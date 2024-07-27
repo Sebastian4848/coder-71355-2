@@ -21,8 +21,8 @@ class Sistema {
 //? Opcion 2: Agregar nuevo herraje al inventario.
 
     nuevoHerraje() {
-        const nombre = solicitarDato('cadena', 'Ingrese el nombre del herraje');
-        const stock = solicitarDato('numeroEntero', 'Ingrese el stock actual del herraje');
+        const nombre = solicitarDato('cadena', 'Ingrese el nombre del herraje', 'Herraje Dorado 2.5cm');
+        const stock = solicitarDato('entero', 'Ingrese el stock actual del herraje','10');
         this.herrajes.push(new Herraje(nombre, stock))
         mostrarTabla(herrajes);
     }
@@ -36,7 +36,7 @@ function mostrarTabla(datos) {
 
 //? Opcion 3: Buscar herrajes.
 function filtrarHerrajes(herraje) {
-    let busqueda = solicitarDato('cadena', 'Ingrese el nombre o alguna caracteristica del herraje');
+    let busqueda = solicitarDato('cadena_minusculas', 'Ingrese el nombre o alguna caracteristica del herraje','Argolla');
     const result = herrajes.filter((herraje) => herraje.nombre.toLowerCase().indexOf(busqueda) != -1);
     mostrarTabla(result);
     if (result.length == 0) {
@@ -47,8 +47,8 @@ function filtrarHerrajes(herraje) {
 
 //? Opcion 4: Agregar incidencia, modificar inventario.
 function agregarIncidencia(herrajes) {
-    let id_herraje = solicitarDato('numero', 'Ingrese el ID del herraje');
-    let cantidad = solicitarDato2('numeroEntero', 'Ingrese la cantidad de de herrajes a sumar o restar');
+    let id_herraje = solicitarDato('entero_positivo', 'Ingrese el ID del herraje','1');
+    let cantidad = solicitarDato('entero', 'Ingrese la cantidad de de herrajes a sumar o restar','5');
     herrajes[id_herraje-1].stock = herrajes[id_herraje-1].stock + cantidad;
     mostrarTabla(herrajes);
 }
