@@ -57,6 +57,12 @@ while (!salir) {
         case 5:
             stockBajo(herrajes);
             break
+        case 6:
+            eliminarHerraje(herrajes);
+            break
+        case 7:
+            idReset(herrajes);
+            break
         default:
             alert("Opcion inexistente. Intente de nuevo");
     }

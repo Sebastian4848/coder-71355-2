@@ -9,17 +9,19 @@ const menu_str = `
     Presiona 3 para buscar herrajes.
     Presiona 4 para agregar una incidencia al stock.
     Presiona 5 para mostrar stock bajo.
+    Presiona 6 para eliminar un herraje.
+    Presiona 7 para reasignar los IDs de los herrajes.
     Presiona 0 para VOLVER o SALIR.
 `
 
-//? Definicion del sistema
+//? Definicion del sistema como metodo constructor
 
 class Sistema {
     constructor(herrajes) {
         this.herrajes = herrajes;
     }
 
-//? Opcion 2: Agregar nuevo herraje al inventario.
+//? Opcion 2: Agregar nuevo herraje al inventario, Se declara como un metodo dentro de la la clase contructora.
 
     nuevoHerraje() {
         const nombre = solicitarDato('cadena', 'Ingrese el nombre del herraje', 'Herraje Dorado 2.5cm');
@@ -63,4 +65,19 @@ function stockBajo(herrajes) {
         alert(`La busqueda de herrajes con stock menor o igual a ${busqueda} arrojo 0 resultados`);
     }
     console.log(`Se encontraron ${result.length} herrajes`);
+}
+
+//? Opcion 6: Eliminar herraje
+function eliminarHerraje(herrajes) {
+    let id_herraje = solicitarDato('entero_positivo', 'Ingrese el ID del herraje','1');
+    herrajes.splice([id_herraje-1],1);
+    mostrarTabla(herrajes);
+}
+
+//? Opcion 7: Regenerar IDs
+function idReset(herrajes) {
+    for (let i = 0; i < herrajes.length; i++) {    
+        herrajes[i].id = i+1;
+    }
+    mostrarTabla(herrajes);
 }

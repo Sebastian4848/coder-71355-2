@@ -1,6 +1,6 @@
-//? PRODUCTOS: Definicion del stock inicial de herrajes. Definicion del Array y de los Objetos.
+//? PRODUCTOS: Definicion del stock inicial de herrajes.
 
-//? Clase Constructora del Objeto Herrajes
+//? Clase Constructora del Objeto Herraje
 class Herraje {
     constructor(nombre, stock) {
         this.id = set_id++
@@ -12,7 +12,7 @@ class Herraje {
 let set_id = 1
 
 
-//? Objeto Herrajes, Inventario inicial de herrajes
+//? Objeto Herrajes, Inventario inicial
 
 let herrajes = [
     new Herraje('Argolla 2cm Dorado', 8),
