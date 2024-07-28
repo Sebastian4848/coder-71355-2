@@ -27,7 +27,7 @@ function solicitarDato(tipo, mensaje, sugerencia = '') {
             dato = prompt(mensaje, sugerencia).toLocaleLowerCase();
         } while (dato == '');
     }
-    
+
     return dato;
 }
 
@@ -53,6 +53,9 @@ while (!salir) {
             break
         case 4:
             agregarIncidencia(herrajes);
+            break
+        case 5:
+            stockBajo(herrajes);
             break
         default:
             alert("Opcion inexistente. Intente de nuevo");

@@ -8,10 +8,11 @@ const menu_str = `
     Presiona 2 para agregar un nuevo herraje al inventario.
     Presiona 3 para buscar herrajes.
     Presiona 4 para agregar una incidencia al stock.
+    Presiona 5 para mostrar stock bajo.
     Presiona 0 para VOLVER o SALIR.
 `
 
-//? Definicipon del sistema
+//? Definicion del sistema
 
 class Sistema {
     constructor(herrajes) {
@@ -53,4 +54,13 @@ function agregarIncidencia(herrajes) {
     mostrarTabla(herrajes);
 }
 
-
+//? Opcion 5: Mostrar stock bajo
+function stockBajo(herrajes) {
+    let busqueda = solicitarDato('entero_positivo', 'Ingrese valor del nivel de stock que desea revisar','15');
+    const result = herrajes.filter((herraje) => herraje.stock<=busqueda);
+    mostrarTabla(result);
+    if (result.length == 0) {
+        alert(`La busqueda de herrajes con stock menor o igual a ${busqueda} arrojo 0 resultados`);
+    }
+    console.log(`Se encontraron ${result.length} herrajes`);
+}
