@@ -40,7 +40,8 @@ function mostrarTabla(datos) {
 //? Opcion 3: Buscar herrajes.
 function filtrarHerrajes(herraje) {
     let busqueda = solicitarDato('cadena_minusculas', 'Ingrese el nombre o alguna caracteristica del herraje', 'Argolla');
-    const result = herrajes.filter((herraje) => herraje.nombre.toLowerCase().indexOf(busqueda) != -1);
+    // const result = herrajes.filter((herraje) => herraje.nombre.toLowerCase().indexOf(busqueda) != -1);
+    const result = herrajes.filter((herraje) => herraje.nombre.toLowerCase().includes(busqueda.toLocaleLowerCase()));
     mostrarTabla(result);
     if (result.length == 0) {
         alert(`La busqueda de ${busqueda} arrojo 0 resultados`);
