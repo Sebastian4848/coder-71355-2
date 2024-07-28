@@ -21,11 +21,11 @@ class Sistema {
         this.herrajes = herrajes;
     }
 
-//? Opcion 2: Agregar nuevo herraje al inventario, Se declara como un metodo dentro de la la clase contructora.
+    //? Opcion 2: Agregar nuevo herraje al inventario, Se declara como un metodo dentro de la la clase contructora.
 
     nuevoHerraje() {
         const nombre = solicitarDato('cadena', 'Ingrese el nombre del herraje', 'Herraje Dorado 2.5cm');
-        const stock = solicitarDato('entero', 'Ingrese el stock actual del herraje','10');
+        const stock = solicitarDato('entero', 'Ingrese el stock actual del herraje', '10');
         this.herrajes.push(new Herraje(nombre, stock))
         mostrarTabla(herrajes);
     }
@@ -39,7 +39,7 @@ function mostrarTabla(datos) {
 
 //? Opcion 3: Buscar herrajes.
 function filtrarHerrajes(herraje) {
-    let busqueda = solicitarDato('cadena_minusculas', 'Ingrese el nombre o alguna caracteristica del herraje','Argolla');
+    let busqueda = solicitarDato('cadena_minusculas', 'Ingrese el nombre o alguna caracteristica del herraje', 'Argolla');
     const result = herrajes.filter((herraje) => herraje.nombre.toLowerCase().indexOf(busqueda) != -1);
     mostrarTabla(result);
     if (result.length == 0) {
@@ -50,16 +50,16 @@ function filtrarHerrajes(herraje) {
 
 //? Opcion 4: Agregar incidencia, modificar inventario.
 function agregarIncidencia(herrajes) {
-    let id_herraje = solicitarDato('entero_positivo', 'Ingrese el ID del herraje','1');
-    let cantidad = solicitarDato('entero', 'Ingrese la cantidad de de herrajes a sumar o restar','5');
-    herrajes[id_herraje-1].stock = herrajes[id_herraje-1].stock + cantidad;
+    let id_herraje = solicitarDato('entero_positivo', 'Ingrese el ID del herraje', '1');
+    let cantidad = solicitarDato('entero', 'Ingrese la cantidad de de herrajes a sumar o restar', '5');
+    herrajes[id_herraje - 1].stock = herrajes[id_herraje - 1].stock + cantidad;
     mostrarTabla(herrajes);
 }
 
 //? Opcion 5: Mostrar stock bajo
 function stockBajo(herrajes) {
-    let busqueda = solicitarDato('entero_positivo', 'Ingrese valor del nivel de stock que desea revisar','15');
-    const result = herrajes.filter((herraje) => herraje.stock<=busqueda);
+    let busqueda = solicitarDato('entero_positivo', 'Ingrese valor del nivel de stock que desea revisar', '15');
+    const result = herrajes.filter((herraje) => herraje.stock <= busqueda);
     mostrarTabla(result);
     if (result.length == 0) {
         alert(`La busqueda de herrajes con stock menor o igual a ${busqueda} arrojo 0 resultados`);
@@ -69,15 +69,17 @@ function stockBajo(herrajes) {
 
 //? Opcion 6: Eliminar herraje
 function eliminarHerraje(herrajes) {
-    let id_herraje = solicitarDato('entero_positivo', 'Ingrese el ID del herraje','1');
-    herrajes.splice([id_herraje-1],1);
+    let id_herraje = solicitarDato('entero_positivo', 'Ingrese el ID del herraje', '1');
+    const herrajeID = herrajes.find((herraje) => herraje.id === id_herraje)
+    const index = herrajes.indexOf(herrajeID);
+    herrajes.splice([index], 1);
     mostrarTabla(herrajes);
 }
 
 //? Opcion 7: Regenerar IDs
 function idReset(herrajes) {
-    for (let i = 0; i < herrajes.length; i++) {    
-        herrajes[i].id = i+1;
+    for (let i = 0; i < herrajes.length; i++) {
+        herrajes[i].id = i + 1;
     }
     mostrarTabla(herrajes);
 }
